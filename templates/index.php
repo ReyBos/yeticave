@@ -27,14 +27,14 @@
         <h2>Открытые лоты</h2>
     </div>
     <ul class="lots__list">
-        <?php foreach ($data_array['ads'] as $good): ?>
+        <?php foreach ($data_array['ads'] as $key => $good): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?= $good['URL-картинки']; ?>" width="350" height="260" alt="Сноуборд">
+                    <img src="<?= $good['URL-картинки']; ?>" width="350" height="260" alt="<?= $good['Название']; ?>">
                 </div>
                 <div class="lot__info">
                     <span class="lot__category"><?= $good['Категория']; ?></span>
-                    <h3 class="lot__title"><a class="text-link" href="lot.html"><?= htmlspecialchars($good['Название']) ; ?></a></h3>
+                    <h3 class="lot__title"><a class="text-link" href="lot.php?lot_id=<?= $key; ?>"><?= htmlspecialchars($good['Название']) ; ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>

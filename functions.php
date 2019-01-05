@@ -28,3 +28,13 @@ function render_template($file_name, $data_array) {
         return $html;
     }
 }
+
+//Проверяет есть ли в массиве искомое значение
+function find_element_in_array($element, $array) {
+    foreach ($array as $value) {
+        if ($value == $element) {
+            return true;
+        }
+    }
+    return false;
+}

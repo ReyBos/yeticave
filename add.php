@@ -26,15 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $file_type = finfo_file($finfo, $tmp_name);
-    if ($file_type != 'image/jpg' && $file_type != 'image/png') {
-      $error['photo2'] = "Загрузите картинку в формате *.png или *.jpg";
-    } else {
+    if ($file_type == 'image/jpeg' || $file_type == 'image/png') {
       $lot_add = [];
       foreach ($lot as $key => $value) {
         $lot_add[$disc[$key]] = $value;
       }
       $lot_add["URL-картинки"] = 'img/' . $path;
       move_uploaded_file($tmp_name, 'img/' .  iconv("UTF-8", "windows-1251", $path));
+    } else {
+      $error['photo2'] = "Загрузите картинку в формате *.png или *.jpg вы загрузили $file_type";
     }
   } else {
     $error['photo2'] = "Вы не загрузили файл";

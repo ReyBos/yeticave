@@ -1,7 +1,10 @@
 <?php
 require_once("data.php");
 require_once("functions.php");
-
+session_start();
+if (empty($_SESSION['user'])) {
+  return http_response_code(403);
+}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $lot = $_POST;
   $keys = ['lot-name', 'category', 'message', 'lot-rate', 'lot-step', 'lot-date'];

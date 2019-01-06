@@ -38,3 +38,12 @@ function find_element_in_array($element, $array) {
     }
     return false;
 }
+
+//Поиск пользователя по email
+function search_user_by_email($email, $users) {
+    foreach ($users as $key => $user) {
+        if ($user['email'] == $email) {
+            return $user;
+        }
+    }
+}

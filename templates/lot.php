@@ -44,6 +44,7 @@
             </p>
         </div>
         <div class="lot-item__right">
+            <?php if (!empty($_SESSION['user'])): ?>
             <div class="lot-item__state">
                 <div class="lot-item__timer timer">
                     <?= $data_array['lot_time_remaining'] ?>
@@ -65,6 +66,7 @@
                     <button type="submit" class="button">Сделать ставку</button>
                 </form>
             </div>
+            <?php endif; ?>
             <div class="history">
                 <h3>История ставок (<span>4</span>)</h3>
                 <!-- заполните эту таблицу данными из массива $bets-->

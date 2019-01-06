@@ -4,7 +4,7 @@ require_once('functions.php');
 $lot_id = $_GET['lot_id'];
 $lot = $ads[$lot_id];
 if(empty($lot)) {
-    return http_response_code(404);
+  return http_response_code(404);
 }
 //сохранение айди лота в куки
 $lots_history_from_cookie = json_decode($_COOKIE['lots_history']);
@@ -25,13 +25,7 @@ if (empty($lots_history_from_cookie)) {
     setcookie($name, json_encode($lots_history), $time_for_life, $path);
   }
 }
-// var_dump(json_encode($lots_history));
-// print "<br>";
-// print (json_encode($lots_history) . "<br>");
-// print (json_decode(json_encode($lots_history)) . "<br>");
-// var_dump(json_decode(json_encode($lots_history)));
-// print "<br>";
-// ставки пользователей, которыми надо заполнить таблицу
+session_start();
 $bets = [
     ['name' => 'Иван', 'price' => 11500, 'ts' => strtotime('-' . rand(1, 50) .' minute')],
     ['name' => 'Константин', 'price' => 11000, 'ts' => strtotime('-' . rand(1, 18) .' hour')],

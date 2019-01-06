@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -22,12 +23,13 @@
 
         <nav class="user-menu">
 
-            <?php if($data_array['is_auth'] == true): ?>
+            <?php if(!empty($_SESSION['user'])): ?>
                 <div class="user-menu__image">
                     <img src="<?= $data_array['user_avatar']; ?>" width="40" height="40" alt="Пользователь">
                 </div>
                 <div class="user-menu__logged">
-                    <p><?= $data_array['user_name']; ?></p>
+                    <p><?= $_SESSION['user']['name']; ?></p>
+                    <p><a href="logout.php">Выход</a></p>
                 </div>
             <?php else: ?>
                 <ul class="user-menu__list">
@@ -35,7 +37,7 @@
                         <a href="#">Регистрация</a>
                     </li>
                     <li class="user-menu__item">
-                        <a href="#">Вход</a>
+                        <a href="login.php">Вход</a>
                     </li>
                 </ul>
             <?php endif; ?>
